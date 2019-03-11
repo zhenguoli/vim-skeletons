@@ -14,7 +14,9 @@ endfunction "}}}
 function! skeletons#skeletonsOn()
     augroup skeletons
         autocmd!
-        autocmd BufNewFile * call skeletons#InsertSkeleton()
+        " NOTE: `UltiSnips#Anon` may call `startinert`, if you want it to stop,
+        " you can only call `stopinsert`.
+        autocmd BufNewFile * call skeletons#InsertSkeleton() | stopinsert
     augroup END
 endfunction
 
